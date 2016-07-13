@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   # Example of regular route:
-    get '/dashbaord' => 'dashboards#dashboard'
+    get '/dashboard' => 'dashboards#index'
+
+    post '/login' => 'users#login'
+    get '/login' => 'users#login'
+
+    post '/logout' => 'users#logout'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

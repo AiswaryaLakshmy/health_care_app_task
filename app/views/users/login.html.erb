@@ -1,0 +1,26 @@
+<div>
+	<h1>Welcome to Health Care Management System</h1>
+</div>
+
+<div>
+	<h2>Login</h2>
+	<%= form_for :user, url: login_path do |f| %>
+
+<p>
+	<%= f.label :Username %><br>
+	<%= f.text_field :username %>
+</p>
+
+<p>
+	<%= f.label :Password %><br>
+	<%= f.password_field :password %>
+</p>
+
+<p>
+	<%= f.submit "Login" %>
+</p>
+
+<% end %>
+</div>
+
+<br>New User? <%= link_to 'SignUp', new_user_path %> here!
