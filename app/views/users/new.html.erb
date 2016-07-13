@@ -1,0 +1,54 @@
+<h2>Sign Up</h2>
+
+
+<div>
+<%= form_for @user do |f| %>
+
+<% if @user.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being signing up:
+	</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+     </ul>
+ </div>
+
+ <% end %>
+ 
+<p>
+	<%= f.label :First_name %><br>
+	<%= f.text_field :First_name %>
+</p>
+
+<p>
+	<%= f.label :Last_name %><br>
+	<%= f.text_field :Last_name %>
+</p>
+
+<p>
+	<%= f.label :Username %><br>
+	<%= f.text_field :username %>
+</p>
+
+<p>
+	<%= f.label :Password %><br>
+	<%= f.password_field :password %>
+</p>
+
+<p>
+	<%= f.label :Confirm_password %><br>
+	<%= f.password_field :confirm_password %>
+</p>
+
+<p>
+	<%= f.submit "Sign Up" %>
+</p>
+
+<% end %>
+
+ </div>
+
+<br><%= link_to 'Back', users_path %>
