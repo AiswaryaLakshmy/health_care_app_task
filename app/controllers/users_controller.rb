@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit( :First_name, :Last_name, :username, :password)
+		params.require(:user).permit( :First_name, :Last_name, :username, :password )
 	end
 
 	def logout_current_user

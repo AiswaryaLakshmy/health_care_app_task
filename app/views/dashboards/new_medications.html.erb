@@ -1,7 +1,13 @@
 
-Set Reminder
-
-
+<div>
+<%= form_for :user, url: new_medications_path, method: :get do |f| %>
+	<p>Drug name:  <%= f.select :drugs, DefaultDrugList::DRUGS %></p>
+	<p>Dosage: <%= f.text_field :dosage %><%= f.select :dosage, DefaultDrugList::DOSAGE %></p>
+	<p>Timing: <%= f.select :timing, DefaultDrugList::TIMING %> a day</p>
+	<p>Other drug, if any: <%= f.text_field :custom_drug %></p>
+	<p><%= f.submit 'Save' %></p>
+<% end %>
+</div>
 <br>
 <br>
 <%= link_to 'Back', dashboard_path %>

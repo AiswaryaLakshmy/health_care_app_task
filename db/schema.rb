@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712123806) do
+ActiveRecord::Schema.define(version: 20160714121045) do
+
+  create_table "default_drug_lists", force: :cascade do |t|
+    t.string   "drug_name"
+    t.string   "dosage"
+    t.string   "timing"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "custom_drug"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
