@@ -1,8 +1,8 @@
 class DashboardsController < ApplicationController
-	before_action :find_current_user, only: [:index]
+	before_action :find_current_user, only: [ :user_settings, :new_medications, :index]
 
-	def settings
-		# @dashboard = User.find(params[:id])
+	def user_settings
+		
 	end
 
 	def index
@@ -10,6 +10,7 @@ class DashboardsController < ApplicationController
 	end
 
 	def new_medications
+
 	end
 
 	private

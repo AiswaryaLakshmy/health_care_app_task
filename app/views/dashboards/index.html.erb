@@ -1,6 +1,17 @@
-<h1 align="center">Dashbaord</h1>
-
+<h1 style="color:blue", align="center">Welcome User</h1>
+<br>Username: <%= @current_user.username %>
 
 <div align="right">
-<%= link_to 'logout', logout_path, method: :post %>
+	<%= link_to 'logout', logout_path, method: :post %>
 </div>
+
+<div align="left">
+	<%= link_to 'user_settings', user_settings_path, method: :get %>
+</div>
+
+<div>
+<br><br><br>
+<p>Medications: nil</p>
+<br><br><br><br><br><br>
+<%= link_to 'Create new medications', new_medications_path, method: :get %>
+</div> 

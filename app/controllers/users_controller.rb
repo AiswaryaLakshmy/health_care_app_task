@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 	def login
 		if request.post?
 			password = Digest::SHA1.hexdigest(user_params[:password])
-			@user = User.find_by(username: user_params["username"])
+			@user = User.find_by(username: user_params[:username])
 			if @user.try(:encrypted_password) == password
 				#username and password matched
 				session[:current_user] = @user.id
