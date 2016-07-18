@@ -8,9 +8,10 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
-	#def show
-		#@user = User.find(params[:id])
-	#end
+	# def show
+	#  	@user = User.find(params[:id])
+	# 	@medications = @user.medications
+	# end
 
 	def create
 		@user = User.new(user_params)
@@ -48,14 +49,13 @@ class UsersController < ApplicationController
 
 	def new_medications
 		@medication = Medication.new
-		
+
 	end
 
 	def medications
 		@medication = Medication.new(drug_params)
 		@medication.save
-		redirect_to :back
-
+		redirect_to dashboard_path
 	end
 
 	def user_settings
@@ -81,6 +81,7 @@ class UsersController < ApplicationController
 
 	def drug_params
 		params[:medication][:dosage] = params[:dosage].join(' ')
-		params.require(:medication).permit( :drug_name, :dosage, :timing, :custom_drug)
+		params.require(:medication).permit( :drug_name, :dosage, :timing, :custom_drug )
 	end
+
 end

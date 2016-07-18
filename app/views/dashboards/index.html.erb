@@ -10,8 +10,35 @@
 </div>
 
 <div>
+<blockquote>
 <br><br><br>
-<p align="center">Medications: nil</p>
-<br><br><br><br><br><br>
-<p align="center"><%= link_to 'Create new medications', new_medications_path, method: :get %></p>
+<h3><p>Medications: </h3></p>
+ 
+<table>
+  <tr>
+    <th>Drug name</th>
+    <th>Dosage</th>
+    <th>Timing</th>
+    <th>Custom Drug</th>
+    <th></th>
+    <th colspan="4"></th>
+  </tr>
+ 
+<% @medications.each do |medication| %>
+  <tr>
+    <td><%= medication.drug_name %></td>
+    <td><%= medication.dosage %></td>
+    <td><%= medication.timing %></td>
+    <td><%= medication.custom_drug %></td>
+    <td><%= link_to 'Destroy', medication_destroy_path(medication),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+   
+  </tr>
+<% end %>
+</table>
+
+</blockquote>
+<br><br>
+<p><%= link_to 'Create new medications', new_medications_path, method: :get %></p>
 </div> 

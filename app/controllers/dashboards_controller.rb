@@ -1,12 +1,21 @@
 class DashboardsController < ApplicationController
-	before_action :find_current_user, only: [ :user_settings, :new_medications, :index]
+	before_action :find_current_user, only: [ :index, :destroy ]
 
 
 	def index
 		redirect_to login_path unless @current_user
-		@medication = Medication.new
+		@medications = Medication.all
+		# @medications = @current_user.medications
+
 	end
 
+	def destroy
+		@medication = Medication.find(params[:id])
+    # @medications = @current_user.medications
+    	
+    @medication.destroy
+    redirect_to dashboard_path
+  end
 
 
 	private

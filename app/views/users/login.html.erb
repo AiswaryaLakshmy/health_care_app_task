@@ -1,9 +1,12 @@
 <div>
-	<h1 style="color:blue", align="center">Welcome to Health Care Management System</h1>
+	<h1 style="color:blue", align="center"><ins>Welcome to Health Care Management System</ins></h1>
 </div>
 
 <div>
+<br><br>
+	<blockquote>
 	<h2>Login</h2>
+
 	<%= form_for :user, url: login_path do |f| %>
 
 <p>
@@ -21,6 +24,8 @@
 </p>
 
 <% end %>
-</div>
 
-<br>New User? <%= link_to 'SignUp', new_user_path %> here!
+
+<br>New User? <%= link_to 'Sign Up', new_user_path %> here!
+</blockquote>
+</div>

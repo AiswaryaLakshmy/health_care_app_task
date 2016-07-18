@@ -1,7 +1,8 @@
-
+<blockquote>
 <div><h2>New Medications</h2></div>
 <div>
 <%= form_for :medication, url: medications_path do |f| %>
+<br>
 	<p>Drug name:  <%= f.select :drug_name, Drug::DEFAULT %></p>
   <p>
         Dosage:  <input type="text" size="20" value="" name="dosage[]">
@@ -11,7 +12,7 @@
         </select>
     </p>
     <p>
-        Timings:  <%= f.select :timing, ['1 Time', '2 Times', '3 Times', '4 Time'] %> a day
+        Timings:  <%= f.select :timing, ['1 Time', '2 Times', '3 Times', '4 Times'] %> a day
     </p>
 
     <p>
@@ -22,3 +23,5 @@
 <br>
 <br>
 <%= link_to 'Back', dashboard_path %>
+<%#= link_to 'Show', user_path %>
+</blockquote>
