@@ -17,11 +17,11 @@ Rails.application.routes.draw do
 
     post '/logout' => 'users#logout'
 
-    get '/user_settings' => 'dashboards#user_settings'
-    post '/user_settings' => 'dashboards#user_settings'
+    get '/user_settings' => 'users#user_settings'
+    post '/user_settings' => 'users#user_settings'
 
-    get '/new_medications' => 'dashboards#new_medications'
-    post 'new_medications' => 'dashboards#new_medications'
+    get '/new_medications' => 'users#new_medications'
+    post '/medications' => 'users#medications'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

@@ -1,0 +1,24 @@
+
+<div><h2>New Medications</h2></div>
+<div>
+<%= form_for :medication, url: medications_path do |f| %>
+	<p>Drug name:  <%= f.select :drug_name, Drug::DEFAULT %></p>
+  <p>
+        Dosage:  <input type="text" size="20" value="" name="dosage[]">
+        <select name="dosage[]">
+        <option>mg</option>
+        <option>ml</option>  
+        </select>
+    </p>
+    <p>
+        Timings:  <%= f.select :timing, ['1 Time', '2 Times', '3 Times', '4 Time'] %> a day
+    </p>
+
+    <p>
+      Other drug, if any: <%= f.text_field :custom_drug %>
+	<p><%= f.submit 'Save' %></p>
+<% end %>
+</div>
+<br>
+<br>
+<%= link_to 'Back', dashboard_path %>

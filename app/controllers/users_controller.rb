@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-	# def index
-	# 	@user = User.new
-	# end
+	def index
+		@user = Medication.all
+	end
 
 	def new
 		@user = User.new
@@ -46,11 +46,29 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def new_medications
+		@medication = Medication.new
+		
+	end
+
+	def medications
+		@medication = Medication.new(drug_params)
+		@medication.save
+		redirect_to :back
+
+	end
+
+	def user_settings
+		
+	end
+
 	def logout
 		logout_current_user
 		flash[:success] = 'Logged out successfully'
 		redirect_to login_path
 	end
+
+	
 
 	private
 	def user_params
@@ -61,4 +79,8 @@ class UsersController < ApplicationController
 		session[:current_user] = nil
 	end
 
+	def drug_params
+		params[:medication][:dosage] = params[:dosage].join(' ')
+		params.require(:medication).permit( :drug_name, :dosage, :timing, :custom_drug)
+	end
 end
