@@ -19,17 +19,21 @@
     <th>Drug name</th>
     <th>Dosage</th>
     <th>Timing</th>
-    <th>Custom Drug</th>
-    <th></th>
+   <!--  <th>Custom Drug</th> -->
+    
     <th colspan="4"></th>
   </tr>
  
 <% @medications.each do |medication| %>
   <tr>
-    <td><%= medication.drug_name %></td>
+  	<% if medication.custom_drug.blank? %>
+    	<td><%= medication.drug_name %></td>
+    <% else %>
+    	<td><%= medication.custom_drug %></td>
+    <% end %>
     <td><%= medication.dosage %></td>
     <td><%= medication.timing %></td>
-    <td><%= medication.custom_drug %></td>
+    <!-- <td><%= medication.custom_drug %></td> -->
     <td><%= link_to 'Destroy', medication_destroy_path(medication),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>

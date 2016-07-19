@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 	end
 
 	def medications
-		@medication = Medication.new(drug_params)
+		@medication = Medication.new(drug_params.merge(user_id: @current_user.id))
 		@medication.save
 		redirect_to dashboard_path
 	end
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
 
 	def drug_params
 		params[:medication][:dosage] = params[:dosage].join(' ')
-		params.require(:medication).permit( :drug_name, :dosage, :timing, :custom_drug )
+		params.require(:medication).permit( :drug_id, :drug_name, :dosage, :timing, :custom_drug )
 	end
 
 end
