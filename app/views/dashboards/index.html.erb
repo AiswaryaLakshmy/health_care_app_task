@@ -1,5 +1,5 @@
-<h1 style="color:blue", align="center">Welcome User</h1>
-<br>Username: <%= @current_user.username %>
+<h1 style="color:blue", align="center"><ins>Welcome User</ins></h1>
+<br><h3>Hello <%= @current_user.First_name %> !</h3>
 
 <div align="right">
 	<%= link_to 'logout', logout_path, method: :post %>
@@ -12,7 +12,7 @@
 <div>
 <blockquote>
 <br><br><br>
-<h3><p>Medications: </h3></p>
+<strong><p>Medications: </h3></strong>
  
 <table>
   <tr>
@@ -21,15 +21,18 @@
     <th>Timing</th>
    <!--  <th>Custom Drug</th> -->
     
-    <th colspan="4"></th>
+    <th colspan="3"></th>
   </tr>
  
 <% @medications.each do |medication| %>
   <tr>
-  	<% if medication.custom_drug.blank? %>
-    	<td><%= medication.drug_name %></td>
+  	<% if medication.drug_name == 'Other' %>
+  		<td><%= medication.custom_drug %>
+  	<%# if medication.custom_drug.blank? %>
+    	<!-- <td><%= medication.drug_name %></td> -->
     <% else %>
-    	<td><%= medication.custom_drug %></td>
+    	<td><%= medication.drug_name %></td>
+    	<!-- <td><%= medication.custom_drug %></td> -->
     <% end %>
     <td><%= medication.dosage %></td>
     <td><%= medication.timing %></td>

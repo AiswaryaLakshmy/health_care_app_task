@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path and return
     else
 
-      #flash[:notice] = 'Form is invalid.'
+      flash[:error] = 'Form is invalid.'
       #flash[:color] = 'invalid'
      render 'new'
     end

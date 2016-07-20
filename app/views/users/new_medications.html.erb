@@ -3,9 +3,9 @@
 <div>
 <%= form_for :medication, url: medications_path do |f| %>
 <br>
-	<p>Drug name:  <%= f.select :drug_name, Drug::DEFAULT %></p>
+	<p>Drug name:  <%= f.select :drug_name, Drug.pluck(:drug_name) %></p>
   <p>
-        Dosage:  <input type="text" size="20" value="" name="dosage[]">
+        Dosage:  <input type="text" size="10" value="" name="dosage[]">
         <select name="dosage[]">
         <option>mg</option>
         <option>ml</option>  
@@ -16,12 +16,27 @@
     </p>
 
     <p>
-      Other drug, if any: <%= f.text_field :custom_drug %></p>
+      Other drug, if any: <%= f.text_field :custom_drug, size: 20, disabled: :true %></p>
 	<p><%= f.submit 'Save' %></p>
 <% end %>
 </div>
 <br>
-<br>
+<br><br><br><br>
 <%= link_to 'Back', dashboard_path %>
 
 </blockquote>
+
+<!-- js query -->
+<script>
+    $(document).ready(function(){
+      $('#medication_drug_name').change(function(){
+        a = $(this).val()
+        if ( a == 'Other' ){
+          $('#medication_custom_drug').prop('disabled', false);
+        }
+        else {
+          $('#medication_custom_drug').prop('disabled', true);
+        }
+      })
+    })
+</script>
