@@ -1,4 +1,4 @@
 class Medication < ActiveRecord::Base
-	belongs_to :users
-  belongs_to :drugs
+	belongs_to :user
+  belongs_to :drug
 end

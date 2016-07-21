@@ -26,18 +26,18 @@
  
 <% @medications.each do |medication| %>
   <tr>
-  	<% if medication.drug_name == 'Other' %>
+  	<% if medication.try(:drug).try(:drug_name) == 'Other' %>
   		<td><%= medication.custom_drug %>
   	<%# if medication.custom_drug.blank? %>
     	<!-- <td><%= medication.drug_name %></td> -->
     <% else %>
-    	<td><%= medication.drug_name %></td>
+    	<td><%= medication.try(:drug).try(:drug_name) %></td>
     	<!-- <td><%= medication.custom_drug %></td> -->
     <% end %>
     <td><%= medication.dosage %></td>
     <td><%= medication.timing %></td>
     <!-- <td><%= medication.custom_drug %></td> -->
-    <td><%= link_to 'Destroy', medication_destroy_path(medication),
+    <td><%= link_to 'Destroy', medication_path(medication),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
    
@@ -47,5 +47,5 @@
 
 </blockquote>
 <br><br>
-<p><%= link_to 'Create new medications', new_medications_path, method: :get %></p>
+<p><%= link_to 'Create new medications', new_medication_path, method: :get %></p>
 </div> 

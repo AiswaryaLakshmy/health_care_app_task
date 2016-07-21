@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715103811) do
+ActiveRecord::Schema.define(version: 20160721073858) do
 
   create_table "default_drug_lists", force: :cascade do |t|
     t.string   "drug_name"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20160715103811) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "custom_drug"
-    t.string   "drug_name"
   end
 
   add_index "medications", ["drug_id"], name: "index_medications_on_drug_id"

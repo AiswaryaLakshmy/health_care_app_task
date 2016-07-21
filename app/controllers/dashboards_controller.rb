@@ -7,11 +7,6 @@ class DashboardsController < ApplicationController
 		# @medications = @current_user.medications
 	end
 
-	def destroy
-		@medication = Medication.find(params[:id])
-    # @medications = @current_user.medications 	
-    @medication.destroy
-    redirect_to dashboard_path
-  end
+	
 
 end

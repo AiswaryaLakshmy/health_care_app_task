@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users
+  resources :medications
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -20,10 +21,10 @@ Rails.application.routes.draw do
     get '/user_settings' => 'users#user_settings'
     post '/user_settings' => 'users#user_settings'
 
-    get '/new_medications' => 'users#new_medications'
-    post '/medications' => 'users#medications'
+    # get '/new_medications' => 'users#new_medications'
+    # post '/medications' => 'users#medications'
 
-    delete '/destroy/:id' => 'dashboards#destroy', as: 'medication_destroy'
+    # delete '/destroy/:id' => 'dashboards#destroy', as: 'medication_destroy'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
