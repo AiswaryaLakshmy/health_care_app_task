@@ -6,5 +6,7 @@ class ApplicationController < ActionController::Base
 
   def find_current_user
 		@current_user = User.find_by(id: session[:current_user])
+		redirect_to login_path unless @current_user
 	end
+	
 end

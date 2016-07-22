@@ -5,7 +5,7 @@
 <br>
 	<p>Drug name:  
     <%#= f.select :drug_name, Drug.pluck(:drug_name) %>
-     <%= f.select :drug_id, options_from_collection_for_select(Drug.all, :id, :drug_name, nil)%> 
+     <%= f.select :drug_id, options_from_collection_for_select(Drug.all, :id, :drug_name, nil)+ content_tag(:option,'Other',value: "") %> 
     </p>
   
   <p>
@@ -33,9 +33,9 @@
 <!-- jquery -->
 <script>
     $(document).ready(function(){
-      $('#medication_drug_name').change(function(){
+      $('#medication_drug_id').change(function(){
         a = $(this).val()
-        if ( a == 'Other' ){
+        if ( a == '' ){
           $('#medication_custom_drug').prop('disabled', false);
         }
         else {

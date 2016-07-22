@@ -26,17 +26,13 @@
  
 <% @medications.each do |medication| %>
   <tr>
-  	<% if medication.try(:drug).try(:drug_name) == 'Other' %>
+  	<% if medication.drug_id.nil? %>
   		<td><%= medication.custom_drug %>
-  	<%# if medication.custom_drug.blank? %>
-    	<!-- <td><%= medication.drug_name %></td> -->
     <% else %>
     	<td><%= medication.try(:drug).try(:drug_name) %></td>
-    	<!-- <td><%= medication.custom_drug %></td> -->
     <% end %>
     <td><%= medication.dosage %></td>
     <td><%= medication.timing %></td>
-    <!-- <td><%= medication.custom_drug %></td> -->
     <td><%= link_to 'Destroy', medication_path(medication),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>

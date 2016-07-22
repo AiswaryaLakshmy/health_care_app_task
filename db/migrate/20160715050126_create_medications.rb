@@ -1,4 +1,5 @@
 class CreateMedications < ActiveRecord::Migration
+
   def change
     create_table :medications do |t|
     	t.belongs_to :user, index: true
@@ -8,4 +9,5 @@ class CreateMedications < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+  
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721073858) do
+ActiveRecord::Schema.define(version: 20160722065739) do
 
   create_table "default_drug_lists", force: :cascade do |t|
     t.string   "drug_name"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20160721073858) do
     t.string   "salt"
     t.string   "First_name"
     t.string   "Last_name"
+    t.string   "password"
+    t.string   "confirm_password"
   end
 
 end
