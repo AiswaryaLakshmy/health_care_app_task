@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722065739) do
+ActiveRecord::Schema.define(version: 20160722111344) do
 
   create_table "default_drug_lists", force: :cascade do |t|
     t.string   "drug_name"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20160722065739) do
 
   create_table "drugs", force: :cascade do |t|
     t.string   "drug_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "custom_drug", default: false
   end
 
   create_table "medications", force: :cascade do |t|
@@ -33,9 +34,8 @@ ActiveRecord::Schema.define(version: 20160722065739) do
     t.integer  "drug_id"
     t.string   "dosage"
     t.string   "timing"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "custom_drug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "medications", ["drug_id"], name: "index_medications_on_drug_id"

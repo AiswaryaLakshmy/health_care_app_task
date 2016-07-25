@@ -5,7 +5,7 @@
 <br>
 	<p>Drug name:  
     <%#= f.select :drug_name, Drug.pluck(:drug_name) %>
-     <%= f.select :drug_id, options_from_collection_for_select(Drug.all, :id, :drug_name, nil)+ content_tag(:option,'Other',value: "") %> 
+     <%= f.select :drug_id, options_from_collection_for_select(Drug.where(custom_drug: false), :id, :drug_name, nil)+ content_tag(:option,'Other',value: "") %> 
     </p>
   
   <p>
@@ -20,7 +20,7 @@
     </p>
 
     <p>
-      Other drug, if any: <%= f.text_field :custom_drug, size: 20, disabled: :true %></p>
+      Other drug, if any: <%= f.text_field :custom, size: 20, disabled: :true %></p>
 	<p><%= f.submit 'Save' %></p>
 <% end %>
 </div>
@@ -36,10 +36,10 @@
       $('#medication_drug_id').change(function(){
         a = $(this).val()
         if ( a == '' ){
-          $('#medication_custom_drug').prop('disabled', false);
+          $('#medication_custom').prop('disabled', false);
         }
         else {
-          $('#medication_custom_drug').prop('disabled', true);
+          $('#medication_custom').prop('disabled', true);
         }
       })
     })

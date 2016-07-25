@@ -49,9 +49,10 @@ class UsersController < ApplicationController
 		end
 	end
 
-
 	def user_settings
-		
+		# @user = User.new(setting_params)
+		# @user.save
+		# redirect_to dashboard_path
 	end
 
 	def logout
@@ -70,5 +71,9 @@ class UsersController < ApplicationController
 	def logout_current_user
 		session[:current_user] = nil
 	end
+
+	# def setting_params
+	# 	params.require(:user).permit( :timestamps )
+	# end
 
 end

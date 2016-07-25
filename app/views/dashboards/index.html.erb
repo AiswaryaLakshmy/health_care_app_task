@@ -26,11 +26,11 @@
  
 <% @medications.each do |medication| %>
   <tr>
-  	<% if medication.drug_id.nil? %>
-  		<td><%= medication.custom_drug %>
-    <% else %>
-    	<td><%= medication.try(:drug).try(:drug_name) %></td>
-    <% end %>
+  	<%# if medication.drug.custom_drug? %>
+  		<!-- <td><%#= medication.drug.custom_drug %></td> -->
+    <%# else %>
+    	<td><%= medication.drug.drug_name %></td>
+    <%# end %>
     <td><%= medication.dosage %></td>
     <td><%= medication.timing %></td>
     <td><%= link_to 'Destroy', medication_path(medication),
