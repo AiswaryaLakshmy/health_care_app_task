@@ -10,6 +10,10 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def edit
+		@user = User.find(params[:id])
+	end
+
 	def create
 		@user = User.new(user_params)
 		password = Digest::SHA1.hexdigest(user_params[:password])
@@ -28,6 +32,16 @@ class UsersController < ApplicationController
     	flash[:error] = 'Password and confirm password doesnt match'
     	render 'new'
     end
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update(user_params)
+			redirect_to dashboard_path and return
+
+		else 
+			render 'edit'
+		end
 	end
 
 	def login
@@ -49,19 +63,11 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def user_settings
-		# @user = User.new
-		# @user.save
-		# redirect_to dashboard_path
-	end
-
 	def logout
 		logout_current_user
 		flash[:success] = 'Logged out successfully'
 		redirect_to login_path
 	end
-
-	
 
 	private
 	def user_params
