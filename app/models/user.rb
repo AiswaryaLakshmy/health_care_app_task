@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	has_many :medications, dependent: :destroy
+	has_many :medications
   has_many :drugs, through: :medications
 	# EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 	validates :username, presence: true, uniqueness: true, length: { in: 4..20 }
