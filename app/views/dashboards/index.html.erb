@@ -1,5 +1,5 @@
-<h1 style="color:blue", align="center"><ins>Welcome User</ins></h1>
-<br><h3>Hello <%= @current_user.First_name %> !</h3>
+<h1 style="color:red", align="center"><ins>Health Care Management System</ins></h1>
+<br><h3 style="color:brown">Welcome <%= @current_user.First_name %> <%= @current_user.Last_name %>!</h3>
 
 <div align="right">
 	<%= link_to 'logout', logout_path, method: :post %>
@@ -19,18 +19,12 @@
     <th>Drug name</th>
     <th>Dosage</th>
     <th>Timing</th>
-   <!--  <th>Custom Drug</th> -->
-    
     <th colspan="3"></th>
   </tr>
  
 <% @medications.each do |medication| %>
   <tr>
-  	<%# if medication.drug.custom_drug? %>
-  		<!-- <td><%#= medication.drug.custom_drug %></td> -->
-    <%# else %>
-    	<td><%= medication.drug.drug_name %></td>
-    <%# end %>
+    <td><%= medication.drug.drug_name %></td>
     <td><%= medication.dosage %></td>
     <td><%= medication.timing %></td>
     <td><%= link_to 'Destroy', medication_path(medication),

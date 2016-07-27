@@ -1,33 +1,10 @@
-<h1><p align="center">My Profile</p></h1>
+<br>
 <blockquote> 
-First name: <%= @current_user.First_name %><br>
-Last name: <%= @current_user.Last_name %>
+
+<p><h2 style="color:brown"><ins>My Profile</ins></h2></p>
+<br>
+<%= render 'form' %>
+
+<br><p><%= link_to 'Back', dashboard_path %></p>
+
 </blockquote>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br><br><p><%= link_to 'Back', dashboard_path %></p>

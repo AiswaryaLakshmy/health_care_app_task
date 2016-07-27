@@ -5,7 +5,6 @@ class MedicationsController < ApplicationController
 	end
 
 	def create
-			
 		@medication = Medication.new(medication_params.merge(user_id: @current_user.id))
 		@drug = Drug.find(medication_params[:drug_id]) if medication_params[:drug_id].present?
 		if @current_user.drugs.include?(@drug)
@@ -22,10 +21,10 @@ class MedicationsController < ApplicationController
 	end
 
 	def destroy
-			@medication = Medication.find(params[:id])	
-    	@medication.drug.destroy if @medication.drug.custom_drug?
-    	@medication.destroy
-    	redirect_to dashboard_path
+		@medication = Medication.find(params[:id])	
+    @medication.drug.destroy if @medication.drug.custom_drug?
+    @medication.destroy
+    redirect_to dashboard_path
   end
 
   private

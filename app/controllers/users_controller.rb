@@ -36,11 +36,18 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update(user_params)
-			redirect_to dashboard_path and return
-
-		else 
-			render 'edit'
+		if user_params[:password] == user_params[:confirm_password]
+			password = Digest::SHA1.hexdigest(user_params[:password])
+			@user.encrypted_password = password
+			if @user.update(user_params)
+				flash[:success] = 'Updated succefully!'
+				redirect_to dashboard_path and return
+			else 
+				render 'edit'
+			end
+		else
+    	flash[:error] = 'New password and confirm password doesnt match'
+    	render 'edit'
 		end
 	end
 

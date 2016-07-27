@@ -1,0 +1,44 @@
+<%= form_for @user do |f| %>
+
+<% if @user.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@user.errors.count, "error") %> prohibited
+        this User's profile from being saved:
+	</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+     </ul>
+ </div>
+ <% end %>
+
+<p>
+	<%= f.label :First_name %><br>
+	<%= f.text_field :First_name %>
+</p>
+<br>
+<p>
+	<%= f.label :Last_name %><br>
+	<%= f.text_field :Last_name %>
+</p>
+<br>
+<p>
+	<%= f.label :Username %><br>
+	<%= f.text_field :username %>
+</p>
+<br>
+<p>
+	<%= f.label :Change_password %><br>
+	<%= f.password_field :password %>
+</p>
+<br>
+<p>
+	<%= f.label :Confirm_new_password %><br>
+	<%= f.password_field :confirm_password %>
+</p>
+<br>
+<p>
+	<%= f.submit "Update" %>
+</p>
+<% end %>
