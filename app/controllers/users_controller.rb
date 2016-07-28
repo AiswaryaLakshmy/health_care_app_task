@@ -36,11 +36,23 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if user_params[:password] == user_params[:confirm_password]
-			password = Digest::SHA1.hexdigest(user_params[:password])
-			@user.encrypted_password = password
-			if @user.update(user_params)
-				flash[:success] = 'Updated succefully!'
+		binding.pry
+		if @user.update(user_params)
+			flash[:success] = 'Updated succefully!'
+			redirect_to dashboard_path and return
+		else 
+			render 'edit'
+		end
+	end
+
+	def change_password
+		current_password = Digest::SHA1.hexdigest(params[:user][:current_password])
+		if @current_user.try(:encrypted_password) == current_password
+			if user_params[:password] == user_params[:confirm_password]
+				password = Digest::SHA1.hexdigest(user_params[:password])
+				@current_user.encrypted_password = password
+			if @current_user.update(password: user_params[:password])
+				flash[:success] = 'Password changed succefully!'
 				redirect_to dashboard_path and return
 			else 
 				render 'edit'
@@ -49,6 +61,9 @@ class UsersController < ApplicationController
     	flash[:error] = 'New password and confirm password doesnt match'
     	render 'edit'
 		end
+		else
+			flash[:error] = 'Current password is incorrect'
+	 	end
 	end
 
 	def login

@@ -18,9 +18,8 @@ Rails.application.routes.draw do
 
     post '/logout' => 'users#logout'
 
-    # get '/user_settings' => 'users#user_settings'
-    # post '/user_settings' => 'users#user_settings'
-
+    get '/change_password' => 'users#change_password'
+    post '/change_password' => 'users#change_password'
     # get '/new_medications' => 'users#new_medications'
     # post '/medications' => 'users#medications'
 
