@@ -1,18 +1,16 @@
 <h1 style="color:red", align="center"><ins>Health Care Management System</ins></h1>
 <br><h3 style="color:brown">Welcome <%= @current_user.First_name %> <%= @current_user.Last_name %>!</h3>
 
-<div align="right">
-	<%= link_to 'logout', logout_path, method: :post %>
+<br><br>
+<div class="my_profile">
+	<p>><%= link_to 'My Profile', edit_user_path(@current_user), method: :get %></p>
+  <br>
+  <p>><%= link_to 'Create new medications', new_medication_path, method: :get %></p><br>
+  <p>><%= link_to 'logout', logout_path, method: :post %></p>
 </div>
+<div class="change_password">
 
-<div align="left">
-	<%= link_to 'My Profile', edit_user_path(@current_user), method: :get %>
-</div>
-
-<div>
-<blockquote>
-<br><br><br>
-<strong><p>Medications: </h3></strong>
+<strong><h3>Medications: </h3></strong>
  
 <table>
   <tr>
@@ -33,10 +31,5 @@
    
   </tr>
 <% end %>
-</table>
-
-<br><br>
-<p><%= link_to 'Create new medications', new_medication_path, method: :get %></p>
-</div> 
-
-</blockquote>
+</table> 
+</div>
